@@ -21,7 +21,7 @@ const NarrateActionOutputSchema = z.object({
   narrative: z.string().describe('A vivid description of what happens next in the game.'),
   gameOver: z.boolean().describe('Set to true if the game has ended (player won or lost).'),
   gameStatus: z.enum(["win", "loss", "ongoing"]).describe('The current status of the game. Set to "win" or "loss" if gameOver is true, otherwise "ongoing".'),
-  feedback: z.string().optional().describe('Optional feedback. If the game ended, explain why (e.g., "You defeated the Dragon Lord!"). If ongoing, can be a hint or comment.'),
+  feedback: z.string().optional().describe('Optional feedback. If the game ended, explain why (e.g., "You defeated the Dragon Lord!"). If ongoing, can be a hint or comment, or describe a non-fatal consequence like "You step on a trap! -15 HP. You’re still alive but shaken."'),
 });
 export type NarrateActionOutput = z.infer<typeof NarrateActionOutputSchema>;
 
@@ -39,6 +39,9 @@ Your goal is to guide the player through an adventure that can result in a WIN o
 - A WIN might involve defeating a major boss, finding a legendary artifact, or escaping the dungeon.
 - A LOSS might involve the player character's demise, failing a critical objective, or falling into an inescapable trap.
 
+The game should generally allow for several turns of play. Avoid immediate game over states for initial actions unless the player's action is exceptionally reckless or directly leads to a pre-defined 'instant lose' condition (like directly attacking a vastly superior foe without preparation).
+Introduce setbacks like minor injuries (e.g., "You step on a trap! -15 HP. You’re still alive but shaken."), loss of items, or triggering non-lethal traps before escalating to a full game over. The player should have a chance to react to danger.
+
 Previous Narrative:
 {{{previousNarrative}}}
 
@@ -50,10 +53,12 @@ Based on the player's action and the previous narrative:
 2.  Determine if this action leads to the end of the game.
     - If the game ends, set 'gameOver' to true. Set 'gameStatus' to "win" or "loss".
     - If the game continues, set 'gameOver' to false and 'gameStatus' to "ongoing".
-3.  Provide brief 'feedback'. If the game ended, explain why (e.g., "You defeated the Dragon Lord!" or "The poison was too potent."). If ongoing, you can provide a subtle hint for what the player might do next or a comment on their action.
+3.  Provide brief 'feedback'.
+    - If the game ended, explain why (e.g., "You defeated the Dragon Lord!" or "The poison was too potent.").
+    - If ongoing, you can provide a subtle hint for what the player might do next, a comment on their action, or describe a non-fatal consequence (e.g., "You trigger a dart trap, taking a small amount of damage but can continue.").
 
 Stay in character as the dungeon master. Ensure the output strictly adheres to the NarrateActionOutputSchema.
-The game needs to have an end result, good or bad, for the user depending on their actions.`,
+The game needs to have an end result, good or bad, for the user depending on their actions over time.`,
 });
 
 const narrateActionFlow = ai.defineFlow(
