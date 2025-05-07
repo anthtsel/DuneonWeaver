@@ -41,9 +41,10 @@ A WIN should represent the culmination of a significant journey, potentially inv
 Do NOT allow the player to win in the first 3-4 turns; the journey must feel substantial and earned.
 A LOSS might involve the player character's demise due to accumulated damage/setbacks, failing a critical objective across multiple stages, or falling into an unrecoverable situation after several poor choices or unlucky events.
 
-Avoid immediate game over states for initial actions unless the player's action is exceptionally reckless (e.g., attacking a clearly insurmountable foe without any preparation or trying to drink obvious poison).
-Introduce tougher choices as the game progresses. Decisions should have meaningful consequences, positive or negative, that can affect later stages of the adventure.
-Introduce setbacks like minor injuries (e.g., "You take a glancing blow! -10 Health. You're still in the fight." or "The acidic slime burns your gear, making things a bit tougher."), loss of a temporary advantage, triggering non-lethal traps, or encountering environmental hazards. These setbacks should test the player's resilience but not immediately end the game. The player should have opportunities to react, adapt, or attempt to recover.
+**Crucially, do NOT end the game, especially with a LOSS, within the first few (e.g., 3-4) player actions, even if the action seems suboptimal.** The player needs a chance to get started and learn. For early missteps or non-optimal actions, provide setbacks (e.g., "You stumble in the dark, twisting your ankle slightly. It'll make quick movements harder for a bit." or "Your hasty search yields nothing but dust, and you hear a faint click from a nearby mechanism.") rather than an immediate game over. An early game over should only be considered if an action is *exceptionally reckless and obviously self-destructive* (e.g., "drink the bubbling green poison labeled 'Certain Death'") AND the player has already had at least one or two turns to understand the game's stakes. If an action is simply unhelpful or doesn't make sense in the current context, narrate a neutral or slightly negative outcome without ending the game.
+
+Introduce tougher choices *as the game progresses*. Decisions should have meaningful consequences, positive or negative, that can affect later stages of the adventure.
+Introduce setbacks like minor injuries (e.g., "You take a glancing blow! -10 Health. You're still in the fight." or "The acidic slime burns your gear, making things a bit tougher."), loss of a temporary advantage, triggering non-lethal traps, or encountering environmental hazards. These setbacks should test the player's resilience but not immediately end the game. The player should have opportunities to react, adapt, or attempt to recover from these *later game* setbacks.
 Enemies and obstacles should scale in difficulty. Early encounters might be minor threats, while later stages present more formidable challenges requiring careful thought or previous preparations.
 The player should have a chance to react to danger and make strategic decisions.
 
@@ -56,7 +57,7 @@ Player Action:
 Based on the player's action and the previous narrative, considering the overall progress through the multi-stage adventure:
 1.  Generate a vivid, concise description of what happens next (the 'narrative'). Keep it under 80 words.
 2.  Determine if this action leads to the end of the game.
-    - If the game ends, set 'gameOver' to true. Set 'gameStatus' to "win" or "loss". Remember, a "win" should only occur after significant progression through multiple challenges (aim for 6-10 encounters).
+    - If the game ends, set 'gameOver' to true. Set 'gameStatus' to "win" or "loss". Remember, a "win" should only occur after significant progression through multiple challenges (aim for 6-10 encounters). A "loss" should also generally result from accumulated failures or significant missteps after some progression, not on an initial action unless the strict criteria above are met.
     - If the game continues, set 'gameOver' to false and 'gameStatus' to "ongoing".
 3.  Provide brief 'feedback'.
     - If the game ended with a WIN: Explain the culmination of their journey (e.g., "After a grueling journey through treacherous halls and defeating the Shadow Lich, you finally claim the Sunstone Shard! Your name will be sung by bards for generations!").
