@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { ArrowRight, Loader2, Swords, History, Info } from 'lucide-react';
+import { ArrowRight, Loader2, Swords, History } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,6 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Badge } from '@/components/ui/badge'; // Added import for Badge
 
 const INITIAL_GAME_PROMPT = "The adventurer stands at the entrance of a long-forgotten dungeon, rumored to hold immense treasures and equally great dangers. The air is heavy with the scent of dust and decay.";
 const STORAGE_KEY = 'dungeonWeaverRuns';
