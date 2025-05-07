@@ -1,3 +1,4 @@
+
 'use client';
 
 import type * as React from 'react';
@@ -32,6 +33,13 @@ export interface RunData {
 interface PastRunsDisplayProps {
   runs: RunData[];
 }
+
+const DEFAULT_PAST_RUN_STATS: CharacterStatsType = {
+  health: 0,
+  strength: 0,
+  agility: 0,
+  intelligence: 0,
+};
 
 export function PastRunsDisplay({ runs }: PastRunsDisplayProps) {
   if (runs.length === 0) {
@@ -72,6 +80,8 @@ export function PastRunsDisplay({ runs }: PastRunsDisplayProps) {
                 console.warn("Error formatting date for run:", run.id, e);
               }
               
+              const characterStatsToDisplay = run.finalCharacterStats || DEFAULT_PAST_RUN_STATS;
+
               return (
                 <Card key={run.id} className="bg-background/50 border-border hover:shadow-md transition-shadow">
                   <CardHeader className="pb-3 pt-4 px-4">
@@ -110,16 +120,16 @@ export function PastRunsDisplay({ runs }: PastRunsDisplayProps) {
                           <div>
                             <h4 className="text-xs font-semibold text-foreground/80 mb-1 flex items-center"><Dumbbell className="mr-1.5 h-3 w-3" />Final Stats:</h4>
                             <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
-                              <span><Heart className="inline mr-1 h-3 w-3 text-red-500" />H: {run.finalCharacterStats.health}</span>
-                              <span><Shield className="inline mr-1 h-3 w-3 text-blue-500" />S: {run.finalCharacterStats.strength}</span>
-                              <span><Zap className="inline mr-1 h-3 w-3 text-yellow-500" />A: {run.finalCharacterStats.agility}</span>
-                              <span><Brain className="inline mr-1 h-3 w-3 text-purple-500" />I: {run.finalCharacterStats.intelligence}</span>
+                              <span><Heart className="inline mr-1 h-3 w-3 text-red-500" />H: {characterStatsToDisplay.health}</span>
+                              <span><Shield className="inline mr-1 h-3 w-3 text-blue-500" />S: {characterStatsToDisplay.strength}</span>
+                              <span><Zap className="inline mr-1 h-3 w-3 text-yellow-500" />A: {characterStatsToDisplay.agility}</span>
+                              <span><Brain className="inline mr-1 h-3 w-3 text-purple-500" />I: {characterStatsToDisplay.intelligence}</span>
                             </div>
                           </div>
                           <Separator className="my-1" />
                            <div>
                             <h4 className="text-xs font-semibold text-foreground/80 mb-1 flex items-center"><Package className="mr-1.5 h-3 w-3" />Final Inventory:</h4>
-                            {run.finalInventory.length > 0 ? (
+                            {run.finalInventory && run.finalInventory.length > 0 ? (
                               <ul className="list-disc list-inside space-y-0.5 text-xs text-muted-foreground">
                                 {run.finalInventory.map((item, i) => <li key={`inv-${i}`} className="capitalize">{item}</li>)}
                               </ul>
@@ -128,7 +138,7 @@ export function PastRunsDisplay({ runs }: PastRunsDisplayProps) {
                           <Separator className="my-1" />
                           <div>
                             <h4 className="text-xs font-semibold text-foreground/80 mb-1 flex items-center"><BookOpen className="mr-1.5 h-3 w-3" />Final Skills:</h4>
-                            {run.finalSkills.length > 0 ? (
+                            {run.finalSkills && run.finalSkills.length > 0 ? (
                               <ul className="list-disc list-inside space-y-0.5 text-xs text-muted-foreground">
                                 {run.finalSkills.map((skill, i) => <li key={`skill-${i}`} className="capitalize">{skill}</li>)}
                               </ul>
@@ -147,3 +157,4 @@ export function PastRunsDisplay({ runs }: PastRunsDisplayProps) {
     </Card>
   );
 }
+
