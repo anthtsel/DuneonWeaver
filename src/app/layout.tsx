@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({ // Corrected instantiation
 });
 
 export const metadata: Metadata = {
-  title: 'TextVenture', // Updated title
+  title: 'Dungeon Weaver', // Updated title
   description: 'An AI-powered text adventure game.', // Updated description
 };
 

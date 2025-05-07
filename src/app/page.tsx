@@ -12,7 +12,7 @@ import { narrateAction } from '@/ai/flows/narrate-action';
 
 const INITIAL_GAME_PROMPT = "The adventurer stands at the entrance of a long-forgotten dungeon, rumored to hold immense treasures and equally great dangers. The air is heavy with the scent of dust and decay.";
 
-export default function TextVenturePage() {
+export default function DungeonWeaverPage() {
   const [narratives, setNarratives] = React.useState<string[]>([]);
   const [inputValue, setInputValue] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
@@ -84,7 +84,7 @@ export default function TextVenturePage() {
       <main className="w-full max-w-3xl flex-grow flex flex-col">
         <Card className="shadow-2xl w-full h-full flex flex-col border-accent/20">
           <CardHeader className="flex flex-row items-center justify-between border-b border-border p-4">
-            <CardTitle className="text-3xl font-bold text-accent">TextVenture</CardTitle>
+            <CardTitle className="text-3xl font-bold text-accent">Dungeon Weaver</CardTitle>
             <Swords className="h-8 w-8 text-accent" data-ai-hint="fantasy weapon" />
           </CardHeader>
 
