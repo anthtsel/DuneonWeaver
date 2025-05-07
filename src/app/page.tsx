@@ -200,7 +200,7 @@ export default function DungeonWeaverPage() {
     <TooltipProvider>
       <div className="flex flex-col lg:flex-row items-start justify-center min-h-screen bg-background text-foreground p-4 md:p-8 font-serif gap-6">
         {/* Left Panel: Character Stats, Inventory, Skills */}
-        <Card className="shadow-lg w-full lg:w-1/3 lg:max-w-sm border-accent/20 sticky top-8">
+        <Card className="shadow-lg w-full lg:w-1/3 lg:max-w-sm border-accent/20 sticky top-8 self-start max-h-[calc(100vh-3rem)] md:max-h-[calc(100vh-4rem)] overflow-y-auto">
           <CardHeader className="border-b border-border p-4">
             <CardTitle className="text-2xl text-accent flex items-center">
               <Sparkles className="mr-2 h-6 w-6" /> Adventurer's Log
