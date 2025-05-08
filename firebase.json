@@ -1,0 +1,16 @@
+{
+      "hosting": {
+        "site": "dungeon-weaver-d5q1x",
+        "source": ".",
+        "frameworksBackend": {
+          "region": "us-central1",
+          "name": "dungeonweaver"
+        },
+        "rewrites": [
+          {
+            "source": "**",
+            "function": "ssrdungeonweaverd5q1x"
+          }
+        ]
+      }
+    }
