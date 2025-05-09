@@ -3,7 +3,7 @@
 .env.*
 
 # App Hosting Configuration (if you choose to manage it outside of git)
-apphosting.yaml
+apphosting.yaml*
 
 # Next.js & Node
 .next/
